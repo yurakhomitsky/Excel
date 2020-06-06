@@ -8,7 +8,9 @@
     "rules": {
         "require-jsdoc":"off",
         "indent":"off",
-        "semi":"warn"
+        "semi":"warn",
+        "linebreak-style": "off",
+        "object-curly-spacing": "off"
     },
     "extends": ["eslint:recommended", "google"]
 }
