@@ -8,9 +8,18 @@
     "rules": {
         "require-jsdoc":"off",
         "indent":"off",
-        "semi":"warn",
+        "semi":"off",
         "linebreak-style": "off",
-        "object-curly-spacing": "off"
+        "object-curly-spacing": "off",
+        "padded-blocks": "off",
+        "no-trailing-spaces": "off",
+        "eol-last": "off",
+        "arrow-parens": "off",
+        "comma-spacing":"off",
+        "quotes":"warn",
+        "operator-linebreak":"off",
+        "space-before-function-paren":"off",
+        "max-len": "off"
     },
     "extends": ["eslint:recommended", "google"]
 }
