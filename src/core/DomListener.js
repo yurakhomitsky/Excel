@@ -1,6 +1,14 @@
 import { capitalize } from './untils';
 
+/**
+ *
+ *
+ * @export
+ * @class DomListener
+ * @classdesc - Class for management events
+ */
 export class DomListener {
+
     constructor($root, listeners = []) {
         
         if (!$root) {
@@ -10,7 +18,11 @@ export class DomListener {
         this.listeners = listeners;
     }
 
-
+    /**
+     * Add DOM listeners for component
+     *
+     * @memberof DomListener
+     */
     initDOMListeners() {
         this.listeners.forEach(listener => {
             const method = getMethodName(listener);
@@ -26,6 +38,11 @@ export class DomListener {
         });
     }
 
+    /**
+     * Removes DOM listeners from component
+     *
+     * @memberof DomListener
+     */
     removeDOMListeners() {
         this.listeners.forEach(listener => {
             const method = getMethodName(listener);
@@ -34,7 +51,13 @@ export class DomListener {
     }
 
 }
-// input => onInput
-function getMethodName(eventName) {
-    return 'on' + capitalize(eventName);
-}
+    // input => onInput
+    /**
+     * Return event name with prefix on and capitalized event Name
+     * 
+     * @param {string} eventName - Event name
+     * @return {string} - Event name
+     */
+    function getMethodName(eventName) {
+        return 'on' + capitalize(eventName);
+    }

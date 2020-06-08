@@ -1,3 +1,9 @@
+/**
+ *  Returns capitalized firts letter of the string
+ *
+ * @param {string} string - The desired string
+ * @return {string} - capitalized firts letter of the string
+ */
 export function capitalize(string) {
     if (typeof string !== 'string') {
         return ''
