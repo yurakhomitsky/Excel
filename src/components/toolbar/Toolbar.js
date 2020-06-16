@@ -3,10 +3,11 @@ import { ExcelComponent } from '../../core/ExcelComponent';
 export class ToolBar extends ExcelComponent {
     static className = 'excel__toolbar';
 
-    constructor($root) {
+    constructor($root, options) {
       super($root, {
         name: 'Toolbar',
         listeners: ['click'],
+        ...options,
       })
     }
 
