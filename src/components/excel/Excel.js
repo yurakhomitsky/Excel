@@ -1,4 +1,5 @@
 import { $ } from '../../core/dom';
+import {Emitter} from '../../core/Emitter';
 
 /**
  * @class Excel 
@@ -14,6 +15,7 @@ export class Excel {
     constructor(selector, options) {
         this.$el = $(selector);
         this.components = options.components || [];
+        this.emitter = new Emitter();
     }
 
     
@@ -30,6 +32,10 @@ export class Excel {
         // returns instance of Dom class
         const $root = $.create('div','excel'); 
         
+        const componentOptions = {
+            emitter: this.emitter,
+        }
+
         // loop through list of components
         this.components = this.components.map(Component => {
 
@@ -37,7 +43,7 @@ export class Excel {
             const $el = $.create('div', Component.className); 
 
             // creates instance for each component
-            const component = new Component($el);
+            const component = new Component($el,componentOptions);
 
             // fill innerHTML element from each components
             $el.html(component.toHTML());
@@ -60,5 +66,9 @@ export class Excel {
         // loop through list of components and call init() for init
         // eventListeners
         this.components.forEach(component => component.init());
+    }
+
+    destroy() {
+        this.components.forEach(component => component.destroy())
     }
 }
