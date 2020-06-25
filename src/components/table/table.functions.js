@@ -9,7 +9,7 @@ export function isCell(event) {
   return event.target.dataset.type === 'cell';
 }
 
-export async function matrix($target, $current) {
+export function matrix($target, $current) {
   const target = $target.id(true);
   const current = $current.id(true);
 
