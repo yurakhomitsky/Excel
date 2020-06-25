@@ -22,4 +22,14 @@ export class TableSelection {
         this.group.forEach(element => element.removeClass(TableSelection.className))
         this.group = []
     }
+
+    get selectedIds() {
+        return this.group.map(element => element.id());
+    }
+
+    applyStyle(style) {
+        this.group.forEach(element => {
+            element.css(style);
+        })
+    }
 }

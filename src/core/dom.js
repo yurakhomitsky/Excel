@@ -25,7 +25,7 @@ class Dom {
   }
 
   text(text) {
-    if (typeof text === 'string') {
+    if (typeof text !== 'undefined') {
       this.$element.textContent = text;
       return this;
     }
@@ -34,6 +34,13 @@ class Dom {
     }
     return this.$element.textContent.trim();
     
+  }
+
+  getStyles(styles = []) {
+    return styles.reduce((acc, style) => {
+      acc[style] = this.$element.style[style]
+      return acc;
+    }, {})
   }
 
   clear() {
@@ -124,6 +131,14 @@ class Dom {
       }
     }
     return this.data.id;
+  }
+
+  attr(name, value) {
+    if (value) {
+      this.$element.setAttribute(name,value);
+      return this;
+    }
+    return this.$element.getAttribute(name);
   }
 
 
