@@ -1,7 +1,7 @@
 export function rootReducer(state, action) {
     const actions = {
         __INIT__: () => {
-            return state;
+            return {...state};
         },
         TABLE_RESIZE: () => {
             const field = action.data.type === 'col' ? 'colState': 'rowState'
@@ -43,6 +43,12 @@ export function rootReducer(state, action) {
             return {
                 ...state,
                 title: action.data,
+            }
+        },
+        UPDATE_DATE: () => {
+            return {
+                ...state,
+                openedDate: action.data,
             }
         },
         default: () => {
