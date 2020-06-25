@@ -1,5 +1,3 @@
-
-
 /**
  *  Returns capitalized firts letter of the string
  *
@@ -40,13 +38,17 @@ export function toInlineStyles(styles = {}) {
         .join(';');
 }
 export function debounce(fn, wait) {
-    let timeout
-    return function(...args) {
+    let timeout;
+    return function (...args) {
         const later = () => {
             clearTimeout(timeout);
             fn(...args);
-        }
+        };
         clearTimeout(timeout);
-        timeout = setTimeout(later, wait)
-    }
+        timeout = setTimeout(later, wait);
+    };
+}
+
+export function removeTextSelection() {
+    window.getSelection().removeAllRanges();
 }
