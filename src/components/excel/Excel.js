@@ -1,6 +1,7 @@
 import { $ } from '../../core/dom';
 import { Emitter } from '../../core/Emitter';
 import { StoreSubscriber } from '../../core/StoreSubscriber';
+import { updateDate } from '../../redux/actions';
 
 /**
  * @class Excel
@@ -8,11 +9,9 @@ import { StoreSubscriber } from '../../core/StoreSubscriber';
 export class Excel {
     /**
      *Creates an instance of Excel.
-     * @param {string} selector The desired selector of the html element
-     * @param {object} options  The object with array of components and store
+     * @param {object} options  The object with array of components, store, subscribe, emiiter
      */
-    constructor(selector, options) {
-        this.$el = $(selector);
+    constructor(options) {
         this.components = options.components || [];
         this.store = options.store;
         this.emitter = new Emitter();
@@ -57,12 +56,10 @@ export class Excel {
     /**
      * Render the whole app
      */
-    render() {
-        // append <div class="excel"></div> to root <div class id="app"></div>
-        this.$el.append(this.getRoot());
-
+    init() {
+        this.store.dispatch(updateDate(new Date().toJSON()))
+        
         this.subscriber.subscribeComponents(this.components);
-
         // loop through list of components and call init() for init eventListeners
         this.components.forEach((component) => component.init());
     }

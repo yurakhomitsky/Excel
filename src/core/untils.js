@@ -52,3 +52,6 @@ export function debounce(fn, wait) {
 export function removeTextSelection() {
     window.getSelection().removeAllRanges();
 }
+export function clone(obj) {
+    return JSON.parse(JSON.stringify(obj));
+}
