@@ -22,6 +22,6 @@
         "space-before-function-paren":"off",
         "max-len": "off"
     },
-    "plugins": ["jest"],
+    // "plugins": ["jest"],
     "extends": ["eslint:recommended", "google"]
 }
